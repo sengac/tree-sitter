@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter",
+  "name": "@sengac/tree-sitter",
   "version": "0.25.0",
   "description": "Node.js bindings to the Tree-sitter parsing library",
   "repository": "http://github.com/tree-sitter/node-tree-sitter",
@@ -68,7 +68,6 @@
   },
   "scripts": {
     "docs": "typedoc --out docs/api tree-sitter.d.ts --readme README.md",
-    "install": "node-gyp-build",
     "build": "prebuildify --napi --strip",
     "rebuild": "node-gyp rebuild",
     "test": "node -e \"require('child_process').spawnSync('node', ['--test', ...require('glob').sync('test/**/*.js')], {stdio:'inherit'})\""
