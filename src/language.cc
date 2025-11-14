@@ -30,7 +30,7 @@ const TSLanguage *UnwrapLanguage(Napi::Value value) {
   if (arg.IsExternal() && arg.CheckTypeTag(&LANGUAGE_TYPE_TAG)) {
     const TSLanguage *language = arg.Data();
     if (language != nullptr) {
-      uint16_t version = ts_language_version(language);
+      uint32_t version = ts_language_abi_version(language);
       if (
         version < TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION ||
         version > TREE_SITTER_LANGUAGE_VERSION
@@ -39,7 +39,7 @@ const TSLanguage *UnwrapLanguage(Napi::Value value) {
           "Incompatible language version. Compatible range: " +
           std::to_string(TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION) + " - " +
           std::to_string(TREE_SITTER_LANGUAGE_VERSION) + ". Got: " +
-          std::to_string(ts_language_version(language));
+          std::to_string(ts_language_abi_version(language));
         RangeError::New(env, message.c_str());
         return nullptr;
       }

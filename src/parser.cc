@@ -232,17 +232,17 @@ Napi::Value Parser::IncludedRanges(const Napi::CallbackInfo &info) {
 }
 
 Napi::Value Parser::TimeoutMicros(const Napi::CallbackInfo &info) {
-  uint64_t timeout_micros = ts_parser_timeout_micros(parser_);
-  return Number::New(info.Env(), static_cast<double>(timeout_micros));
+  // Timeout functionality has been removed from Tree-sitter C API
+  // Return 0 to maintain backward compatibility
+  return Number::New(info.Env(), 0);
 }
 
 Napi::Value Parser::SetTimeoutMicros(const Napi::CallbackInfo &info) {
-  uint64_t timeout_micros;
+  // Timeout functionality has been removed from Tree-sitter C API
+  // Accept the parameter but do nothing to maintain backward compatibility
   if (!info[0].IsNumber()) {
     throw TypeError::New(info.Env(), "First argument must be a number");
   }
-  timeout_micros = info[0].As<Number>().Uint32Value();
-  ts_parser_set_timeout_micros(parser_, timeout_micros);
   return info.This();
 }
 
