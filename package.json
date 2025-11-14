@@ -1,6 +1,6 @@
 {
   "name": "@sengac/tree-sitter",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "description": "Node.js bindings to the Tree-sitter parsing library",
   "repository": "http://github.com/tree-sitter/node-tree-sitter",
   "publishConfig": {
